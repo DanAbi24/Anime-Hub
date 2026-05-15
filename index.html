@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTAKU VERSE — Anime Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- SCANLINE OVERLAY -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <span class="logo-jp">鬼</span>OTAKU<span class="logo-accent">VERSE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#series">Series</a></li>
+        <li><a href="#characters">Characters</a></li>
+        <li><a href="#featured">Spotlight</a></li>
+        <li><a href="#rankings">Rankings</a></li>
+        <li><a href="#contact">Community</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Join Now</a>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-bg"></div>
+    <ul>
+      <li><a href="#series" class="mob-link">Series</a></li>
+      <li><a href="#characters" class="mob-link">Characters</a></li>
+      <li><a href="#featured" class="mob-link">Spotlight</a></li>
+      <li><a href="#rankings" class="mob-link">Rankings</a></li>
+      <li><a href="#contact" class="mob-link">Community</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-slides-wrap">
+      <div class="hero-slide active" data-index="0" style="--bg:url('images/luffy.jpg')">
+        <div class="hero-slide-inner"></div>
+      </div>
+      <div class="hero-slide" data-index="1" style="--bg:url('images/gojo.jpg')">
+        <div class="hero-slide-inner"></div>
+      </div>
+      <div class="hero-slide" data-index="2" style="--bg:url('images/tanjiro-fire.jpg')">
+        <div class="hero-slide-inner"></div>
+      </div>
+    </div>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-ep" id="heroEp">ONE PIECE · EP 1074</div>
+      <h1 class="hero-title">
+        <span class="ht-line" id="htLine1">MONKEY D.</span>
+        <span class="ht-line accent" id="htLine2">LUFFY</span>
+      </h1>
+      <p class="hero-desc" id="heroDesc">King of the Pirates. The man who declared war on the world — and won.</p>
+      <div class="hero-tags" id="heroTags">
+        <span>Action</span><span>Adventure</span><span>Shonen</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#featured" class="btn-primary">Explore Now</a>
+        <a href="#series" class="btn-ghost">Browse Series</a>
+      </div>
+    </div>
+
+    <div class="hero-dots">
+      <button class="hdot active" data-slide="0"></button>
+      <button class="hdot" data-slide="1"></button>
+      <button class="hdot" data-slide="2"></button>
+    </div>
+
+    <div class="hero-side-text" aria-hidden="true">
+      <span>OTAKU VERSE 2025</span>
+    </div>
+
+    <!-- React mount point for live stats ticker -->
+    <div id="react-stats"></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span>ONE PIECE</span><span>✦</span>
+      <span>DEMON SLAYER</span><span>✦</span>
+      <span>JUJUTSU KAISEN</span><span>✦</span>
+      <span>ATTACK ON TITAN</span><span>✦</span>
+      <span>TOKYO GHOUL</span><span>✦</span>
+      <span>BLEACH</span><span>✦</span>
+      <span>NARUTO</span><span>✦</span>
+      <span>OVERLORD</span><span>✦</span>
+      <span>ONE PIECE</span><span>✦</span>
+      <span>DEMON SLAYER</span><span>✦</span>
+      <span>JUJUTSU KAISEN</span><span>✦</span>
+      <span>ATTACK ON TITAN</span><span>✦</span>
+      <span>TOKYO GHOUL</span><span>✦</span>
+      <span>BLEACH</span><span>✦</span>
+      <span>NARUTO</span><span>✦</span>
+      <span>OVERLORD</span><span>✦</span>
+    </div>
+  </div>
+
+  <!-- SERIES GRID -->
+  <section class="series-section" id="series">
+    <div class="section-head">
+      <div class="sec-tag"><span class="jp">シリーズ</span> THE COLLECTION</div>
+      <h2 class="sec-title">Legendary <em>Series</em></h2>
+      <p class="sec-sub">From the depths of the Soul Society to the world's final walls — every legend, catalogued.</p>
+    </div>
+
+    <div class="series-filters">
+      <button class="sfbtn active" data-filter="all">All</button>
+      <button class="sfbtn" data-filter="shonen">Shonen</button>
+      <button class="sfbtn" data-filter="dark">Dark Fantasy</button>
+      <button class="sfbtn" data-filter="action">Action</button>
+    </div>
+
+    <div class="series-grid" id="seriesGrid">
+
+      <article class="anime-card" data-cat="shonen action" data-aos>
+        <div class="acard-img">
+          <img src="images/luffy.jpg" alt="One Piece" loading="lazy" />
+          <div class="acard-glow"></div>
+          <div class="acard-rank">#1</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Shonen · Action</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">One Piece</div>
+          <h3 class="acard-title">Monkey D. Luffy</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.8</span>
+            <span>1000+ eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="shonen action" data-aos>
+        <div class="acard-img">
+          <img src="images/gojo.jpg" alt="Jujutsu Kaisen" loading="lazy" />
+          <div class="acard-glow" style="--glow:#c800ff"></div>
+          <div class="acard-rank">#2</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Shonen · Supernatural</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Jujutsu Kaisen</div>
+          <h3 class="acard-title">Satoru Gojo</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.5</span>
+            <span>47 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="shonen action" data-aos>
+        <div class="acard-img">
+          <img src="images/tanjiro-fire.jpg" alt="Demon Slayer" loading="lazy" />
+          <div class="acard-glow" style="--glow:#ff4400"></div>
+          <div class="acard-rank">#3</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Shonen · Historical</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Demon Slayer</div>
+          <h3 class="acard-title">Tanjiro Kamado</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.4</span>
+            <span>44 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="dark action" data-aos>
+        <div class="acard-img">
+          <img src="images/tokyo-ghoul-2.jpg" alt="Tokyo Ghoul" loading="lazy" />
+          <div class="acard-glow" style="--glow:#cc0000"></div>
+          <div class="acard-rank">#4</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Dark Fantasy · Horror</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Tokyo Ghoul</div>
+          <h3 class="acard-title">Ken Kaneki</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.1</span>
+            <span>48 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="dark action" data-aos>
+        <div class="acard-img">
+          <img src="images/aot.jpg" alt="Attack on Titan" loading="lazy" />
+          <div class="acard-glow" style="--glow:#8b7355"></div>
+          <div class="acard-rank">#5</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Dark · Military</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Attack on Titan</div>
+          <h3 class="acard-title">Eren Yeager</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.7</span>
+            <span>87 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="dark action" data-aos>
+        <div class="acard-img">
+          <img src="images/bleach.jpg" alt="Bleach" loading="lazy" />
+          <div class="acard-glow" style="--glow:#ff6600"></div>
+          <div class="acard-rank">#6</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Shonen · Supernatural</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Bleach</div>
+          <h3 class="acard-title">Hollow Ichigo</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.0</span>
+            <span>366 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="action dark" data-aos>
+        <div class="acard-img">
+          <img src="images/overlord.jpg" alt="Overlord" loading="lazy" />
+          <div class="acard-glow" style="--glow:#ffd700"></div>
+          <div class="acard-rank">#7</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Isekai · Dark Fantasy</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Overlord</div>
+          <h3 class="acard-title">Ainz Ooal Gown</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 8.8</span>
+            <span>52 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+      <article class="anime-card" data-cat="shonen action" data-aos>
+        <div class="acard-img">
+          <img src="images/sharingan.jpg" alt="Naruto" loading="lazy" />
+          <div class="acard-glow" style="--glow:#ff2200"></div>
+          <div class="acard-rank">#8</div>
+          <div class="acard-overlay">
+            <span class="acard-genre">Shonen · Ninja</span>
+          </div>
+        </div>
+        <div class="acard-body">
+          <div class="acard-series">Naruto</div>
+          <h3 class="acard-title">Eternal Sharingan</h3>
+          <div class="acard-meta">
+            <span class="acard-score">★ 9.3</span>
+            <span>720 eps</span>
+          </div>
+          <a href="#" class="acard-link">View Series →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CHARACTER SPOTLIGHT (React mounts here) -->
+  <section class="characters-section" id="characters">
+    <div class="section-head">
+      <div class="sec-tag"><span class="jp">キャラクター</span> CHARACTERS</div>
+      <h2 class="sec-title">Choose Your <em>Fighter</em></h2>
+    </div>
+    <div id="react-characters"></div>
+  </section>
+
+  <!-- FEATURED SPOTLIGHT -->
+  <section class="featured-section" id="featured">
+    <div class="featured-wrap">
+      <div class="featured-visual">
+        <div class="featured-main-img">
+          <img src="images/mikasa.png" alt="Mikasa Ackerman" />
+          <div class="featured-img-fx"></div>
+        </div>
+        <div class="featured-badge">FEATURED</div>
+        <div class="featured-small-img">
+          <img src="images/aot.jpg" alt="Attack on Titan" />
+        </div>
+      </div>
+      <div class="featured-info">
+        <div class="sec-tag"><span class="jp">注目</span> SPOTLIGHT</div>
+        <h2 class="featured-title">Mikasa<br /><em>Ackerman</em></h2>
+        <p class="feat-jp-sub">アッカーマン ミカサ</p>
+        <p class="featured-desc">The Survey Corps' greatest soldier. Born a prodigy, forged by tragedy — Mikasa stands as humanity's last unbreakable shield against the titans that threaten to consume everything.</p>
+        <div class="feat-stats">
+          <div class="fst"><span class="fst-v">S+</span><span class="fst-l">Combat Rank</span></div>
+          <div class="fst"><span class="fst-v">∞</span><span class="fst-l">ODM Mastery</span></div>
+          <div class="fst"><span class="fst-v">100</span><span class="fst-l">Kill Count</span></div>
+          <div class="fst"><span class="fst-v">AoT</span><span class="fst-l">Series</span></div>
+        </div>
+        <div class="feat-tags">
+          <span>Survey Corps</span>
+          <span>Ackerman Clan</span>
+          <span>Season 4</span>
+        </div>
+        <div class="feat-actions">
+          <a href="#" class="btn-primary">Full Profile</a>
+          <a href="#" class="btn-ghost-red">Watch Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP — CINEMATIC -->
+  <div class="cinematic-strip">
+    <div class="cs-item"><img src="images/tokyo-ghoul-1.jpg" alt="Tokyo Ghoul" loading="lazy" /><div class="cs-label"><span>TOKYO GHOUL</span></div></div>
+    <div class="cs-item"><img src="images/tanjiro-eye.jpg" alt="Tanjiro Eye" loading="lazy" /><div class="cs-label"><span>DEMON SLAYER</span></div></div>
+    <div class="cs-item"><img src="images/donald.jpg" alt="Donald" loading="lazy" /><div class="cs-label"><span>DONALD'S WORLD</span></div></div>
+  </div>
+
+  <!-- RANKINGS -->
+  <section class="rankings-section" id="rankings">
+    <div class="section-head">
+      <div class="sec-tag"><span class="jp">ランキング</span> POWER RANKINGS</div>
+      <h2 class="sec-title">The <em>Power</em> Scale</h2>
+    </div>
+    <div class="rankings-table-wrap">
+      <table class="rtable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Character</th>
+            <th>Series</th>
+            <th>Power Level</th>
+            <th>Ability</th>
+            <th>Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rrow" data-aos>
+            <td class="rrank gold">01</td>
+            <td class="rchar"><img src="images/gojo.jpg" alt="" /><span>Satoru Gojo</span></td>
+            <td>Jujutsu Kaisen</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:100%"></span></span>100,000</td>
+            <td>Infinity / Six Eyes</td>
+            <td><span class="tier god">GOD</span></td>
+          </tr>
+          <tr class="rrow" data-aos>
+            <td class="rrank gold">02</td>
+            <td class="rchar"><img src="images/luffy.jpg" alt="" /><span>Monkey D. Luffy</span></td>
+            <td>One Piece</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:97%"></span></span>97,000</td>
+            <td>Gear 5 / Nika</td>
+            <td><span class="tier god">GOD</span></td>
+          </tr>
+          <tr class="rrow" data-aos>
+            <td class="rrank silver">03</td>
+            <td class="rchar"><img src="images/overlord.jpg" alt="" /><span>Ainz Ooal Gown</span></td>
+            <td>Overlord</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:90%"></span></span>90,000</td>
+            <td>World-Class Magic</td>
+            <td><span class="tier s">S+</span></td>
+          </tr>
+          <tr class="rrow" data-aos>
+            <td class="rrank silver">04</td>
+            <td class="rchar"><img src="images/tokyo-ghoul-2.jpg" alt="" /><span>Ken Kaneki</span></td>
+            <td>Tokyo Ghoul</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:85%"></span></span>85,000</td>
+            <td>Kakuja / Dragon</td>
+            <td><span class="tier s">S+</span></td>
+          </tr>
+          <tr class="rrow" data-aos>
+            <td class="rrank bronze">05</td>
+            <td class="rchar"><img src="images/tanjiro-fire.jpg" alt="" /><span>Tanjiro Kamado</span></td>
+            <td>Demon Slayer</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:78%"></span></span>78,000</td>
+            <td>Sun Breathing</td>
+            <td><span class="tier a">A+</span></td>
+          </tr>
+          <tr class="rrow" data-aos>
+            <td class="rrank bronze">06</td>
+            <td class="rchar"><img src="images/bleach.jpg" alt="" /><span>Hollow Ichigo</span></td>
+            <td>Bleach</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:88%"></span></span>88,000</td>
+            <td>Bankai / Hollow</td>
+            <td><span class="tier s">S</span></td>
+          </tr>
+          <tr class="rrow" data-aos>
+            <td class="rrank">07</td>
+            <td class="rchar"><img src="images/mikasa.png" alt="" /><span>Mikasa Ackerman</span></td>
+            <td>Attack on Titan</td>
+            <td><span class="pbar-wrap"><span class="pbar" style="--pw:72%"></span></span>72,000</td>
+            <td>Ackerman Power / ODM</td>
+            <td><span class="tier a">A+</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- COMMUNITY / CONTACT -->
+  <section class="community-section" id="contact">
+    <div class="community-wrap">
+      <div class="comm-left">
+        <div class="sec-tag"><span class="jp">コミュニティ</span> COMMUNITY</div>
+        <h2 class="comm-title">Join the<br /><em>Verse</em></h2>
+        <p class="comm-desc">Connect with 2M+ anime fans. Discuss theories, rank characters, and never miss a simulcast drop.</p>
+        <div class="comm-stats">
+          <div class="cstat"><span class="cstat-n">2.4M</span><span class="cstat-l">Members</span></div>
+          <div class="cstat"><span class="cstat-n">840+</span><span class="cstat-l">Series Listed</span></div>
+          <div class="cstat"><span class="cstat-n">12K</span><span class="cstat-l">Daily Active</span></div>
+        </div>
+      </div>
+      <form class="comm-form" id="joinForm">
+        <div class="fgroup">
+          <label>Username</label>
+          <input type="text" placeholder="your_otaku_name" required />
+        </div>
+        <div class="fgroup">
+          <label>Email</label>
+          <input type="email" placeholder="you@animeverse.com" required />
+        </div>
+        <div class="fgroup">
+          <label>Favorite Series</label>
+          <select>
+            <option value="">Select your #1 series...</option>
+            <option>One Piece</option>
+            <option>Demon Slayer</option>
+            <option>Jujutsu Kaisen</option>
+            <option>Attack on Titan</option>
+            <option>Tokyo Ghoul</option>
+            <option>Bleach</option>
+            <option>Naruto</option>
+            <option>Overlord</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label>Why do you want to join?</label>
+          <textarea rows="3" placeholder="Describe your anime journey..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Enter the Verse</button>
+        <div class="form-ok" id="formOk">⚡ Welcome to OtakuVerse, warrior!</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo"><span class="jp-sm">鬼</span>OTAKU<span class="acc">VERSE</span></span>
+        <p>The ultimate destination for anime culture, characters, and community. Every legend. Every arc. One universe.</p>
+        <div class="footer-socials">
+          <a href="#">Discord</a>
+          <a href="#">Twitter/X</a>
+          <a href="#">YouTube</a>
+          <a href="#">Reddit</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Browse</h4>
+        <ul>
+          <li><a href="#">All Series</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Manga</a></li>
+          <li><a href="#">Seasonal Charts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">Forums</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Power Rankings</a></li>
+          <li><a href="#">Predictions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Contribute</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 OtakuVerse. Fan site — not affiliated with any studios.</span>
+      <span class="jp footer-jp-phrase">一期一会 — Ichi-go ichi-e</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="script.js"></script>
+  <script src="react-components.js"></script>
+</body>
+</html>
