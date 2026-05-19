@@ -4,34 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── CUSTOM CURSOR ──────────────────────────────
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-  });
-
-  (function followRing() {
-    rx += (mx - rx) * 0.1;
-    ry += (my - ry) * 0.1;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(followRing);
-  })();
-
-  document.querySelectorAll('a,button,.anime-card,.cs-item,.rrow,.acard-img,.featured-main-img').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.classList.add('hov'); ring.classList.add('hov'); });
-    el.addEventListener('mouseleave', () => { cursor.classList.remove('hov'); ring.classList.remove('hov'); });
-  });
-
-  if ('ontouchstart' in window) {
-    cursor.style.display = 'none';
-    ring.style.display   = 'none';
-  }
+  // ── CUSTOM CURSOR Removed
 
 
   // ── NAVBAR SCROLL ─────────────────────────────
