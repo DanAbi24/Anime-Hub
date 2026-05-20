@@ -63,6 +63,34 @@ document.addEventListener('DOMContentLoaded', () => {
       line2: 'KAMADO',
       desc:  'Total Concentration. Sun Breathing. The demon who still carries humanity.',
       tags:  ['Historical', 'Action', 'Shonen']
+    },
+    {
+      ep:    'BLEACH · TYBW',
+      line1: 'HOLLOW',
+      line2: 'ICHIGO',
+      desc:  'Bankai. Hollow mask. The Soul Reaper who broke every limit placed on him.',
+      tags:  ['Supernatural', 'Shonen', 'Action']
+    },
+    {
+      ep:    'TOKYO GHOUL · S2',
+      line1: 'KEN',
+      line2: 'KANEKI',
+      desc:  'Neither human nor ghoul. A mind shattered and rebuilt into something terrifying.',
+      tags:  ['Dark Fantasy', 'Horror', 'Psychological']
+    },
+    {
+      ep:    'ATTACK ON TITAN · S4',
+      line1: 'EREN',
+      line2: 'YEAGER',
+      desc:  'The Rumbling. The Founding Titan. Freedom at any cost — even the world.',
+      tags:  ['Dark', 'Military', 'Psychological']
+    },
+    {
+      ep:    'OVERLORD · S4',
+      line1: 'AINZ',
+      line2: 'OOAL GOWN',
+      desc:  'An undead god-king ruling a world he was never meant to enter. All bow.',
+      tags:  ['Isekai', 'Dark Fantasy', 'Magic']
     }
   ];
 
