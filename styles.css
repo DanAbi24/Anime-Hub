@@ -52,7 +52,34 @@ button { background:none; border:none; cursor:none; }
   );
 }
 
-/* ── CURSOR Style removed ── */
+/* ── CUSTOM CURSOR ── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s, height 0.15s, background 0.15s, border-color 0.15s;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background: var(--red);
+  border-color: var(--red);
+  opacity: 0.3;
+}
+
+/* Hide default cursor everywhere */
+* {
+  cursor: none !important;
+}
 
 /* ── BUTTONS ── */
 .btn-primary {

@@ -4,7 +4,33 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── CUSTOM CURSOR Removed
+  // ── CUSTOM CURSOR ─────────────────────────────
+const cursor = document.createElement('div');
+cursor.className = 'custom-cursor';
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// Expand cursor on interactive elements
+const hoverTargets = 'a, button, .sfbtn, .anime-card, .char-tab, .hdot, .featured-small-img';
+document.querySelectorAll(hoverTargets).forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Re-apply hover listeners when DOM changes (for dynamic content)
+const observer = new MutationObserver(() => {
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.removeEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.removeEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+});
+observer.observe(document.body, { childList: true, subtree: true });
 
 
   // ── NAVBAR SCROLL ─────────────────────────────
