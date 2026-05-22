@@ -4,70 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── CUSTOM CURSOR ─────────────────────────────
-const cursor = document.createElement('div');
-cursor.className = 'custom-cursor';
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-
-// Expand cursor on interactive elements
-const hoverTargets = 'a, button, .sfbtn, .anime-card, .char-tab, .hdot, .featured-small-img';
-document.querySelectorAll(hoverTargets).forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-});
-
-// Re-apply hover listeners when DOM changes (for dynamic content)
-const observer = new MutationObserver(() => {
-  document.querySelectorAll(hoverTargets).forEach(el => {
-    el.removeEventListener('mouseenter', () => cursor.classList.add('hover'));
-    el.removeEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-  });
-});
-observer.observe(document.body, { childList: true, subtree: true });
-
-
-  // ── NAVBAR SCROLL ─────────────────────────────
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
-
-  // ── MOBILE MENU ───────────────────────────────
-  const hamburger  = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-
-  document.querySelectorAll('.mob-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-
-
-  // ── HERO CAROUSEL ─────────────────────────────
-  const slides   = document.querySelectorAll('.hero-slide');
-  const dots     = document.querySelectorAll('.hdot');
-  const heroEp   = document.getElementById('heroEp');
-  const htLine1  = document.getElementById('htLine1');
-  const htLine2  = document.getElementById('htLine2');
-  const heroDesc = document.getElementById('heroDesc');
-  const heroTags = document.getElementById('heroTags');
-
+  // ── PRELOAD HERO IMAGES ───────────────────────
   const slideData = [
     {
       ep:    'ONE PIECE · EP 1074',
@@ -119,6 +56,53 @@ observer.observe(document.body, { childList: true, subtree: true });
       tags:  ['Isekai', 'Dark Fantasy', 'Magic']
     }
   ];
+
+  // Preload all hero background images immediately
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  heroSlides.forEach((slide) => {
+    const bgUrl = slide.style.getPropertyValue('--bg');
+    if (bgUrl) {
+      const img = new Image();
+      const url = bgUrl.replace(/url\(['"]?/, '').replace(/['"]?\)/, '');
+      img.src = url;
+    }
+  });
+
+
+  // ── NAVBAR SCROLL ─────────────────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+
+  // ── MOBILE MENU ───────────────────────────────
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+
+  // ── HERO CAROUSEL ─────────────────────────────
+  const slides   = document.querySelectorAll('.hero-slide');
+  const dots     = document.querySelectorAll('.hdot');
+  const heroEp   = document.getElementById('heroEp');
+  const htLine1  = document.getElementById('htLine1');
+  const htLine2  = document.getElementById('htLine2');
+  const heroDesc = document.getElementById('heroDesc');
+  const heroTags = document.getElementById('heroTags');
 
   let current = 0;
   let timer;
@@ -252,7 +236,7 @@ observer.observe(document.body, { childList: true, subtree: true });
   const featSmall = document.querySelector('.featured-small-img img');
   if (featMain && featSmall) {
     document.querySelector('.featured-small-img').addEventListener('click', () => {
-      [featMain.src, featSmall.src] = [featSmall.src, featMain.src];
+      [featMain.src, featSmall.src] = [featSmall.src, featSmall.src];
     });
   }
 

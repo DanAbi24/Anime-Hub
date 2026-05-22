@@ -2,6 +2,15 @@
    OTAKU VERSE — styles.css
    ============================================ */
 
+   /* Preload hero images to prevent loading delay */
+.hero-slide {
+  will-change: opacity, transform;
+}
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
 :root {
   --void:      #050508;
   --deep:      #0a0a10;
@@ -37,7 +46,7 @@ body {
 img { display:block; width:100%; height:100%; object-fit:cover; }
 a { text-decoration:none; color:inherit; }
 ul { list-style:none; }
-button { background:none; border:none; cursor:none; }
+/* button { background:none; border:none; cursor:none; } */
 
 /* ── SCANLINES ── */
 .scanlines {
@@ -53,33 +62,6 @@ button { background:none; border:none; cursor:none; }
 }
 
 /* ── CUSTOM CURSOR ── */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--red);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition: width 0.15s, height 0.15s, background 0.15s, border-color 0.15s;
-  mix-blend-mode: difference;
-}
-
-.custom-cursor.hover {
-  width: 40px;
-  height: 40px;
-  background: var(--red);
-  border-color: var(--red);
-  opacity: 0.3;
-}
-
-/* Hide default cursor everywhere */
-* {
-  cursor: none !important;
-}
 
 /* ── BUTTONS ── */
 .btn-primary {
@@ -359,7 +341,7 @@ button { background:none; border:none; cursor:none; }
   font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   padding: 8px 22px;
   color: var(--gray); border: 1px solid var(--border);
-  transition: all .2s; cursor: none;
+  transition: all .2s;
 }
 .sfbtn:hover { color: var(--white); border-color: var(--border2); }
 .sfbtn.active { color: #fff; background: var(--red); border-color: var(--red); }
